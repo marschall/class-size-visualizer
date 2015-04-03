@@ -22,11 +22,9 @@ class ClassParser {
     int itemCount = reader.getItemCount();
     List<ConstantPoolEntry> items = new ArrayList<>(itemCount);
       
-    for (int i = 0; i < itemCount; i++) {
+    for (int i = 1; i < itemCount; i++) {
+      // skip item 0 because reasons
       int start = reader.getItem(i);
-      if (start == 0) {
-        continue;
-      }
       int tag = byteCode[start -1];
       switch (tag) {
         case CONSTANT_Utf8:
@@ -37,8 +35,41 @@ class ClassParser {
           break;
       }
     }
-    items.sort(ConstantPoolEntry.bySizeDescending());
-    return new ClassInformation(byteCode.length, items, byteCode);
+    
+ // visits the fields and methods
+    int index = reader.header + 6;
+    int interfacesCount = reader.readUnsignedShort(index);
+    System.out.println("interfaces count: " + interfacesCount);
+    index = reader.header + 8 + 2 * interfacesCount;
+    int fieldsCount = reader.readUnsignedShort(index);
+    System.out.println("fields count: " + fieldsCount);
+    index += 2;
+    
+    List<Field> fields = new ArrayList<>(fieldsCount);
+    for (int i = 0; i < fieldsCount; i++) {
+      index = readField(index, reader);
+    }
+//    u += 2;
+//    for (int i = readUnsignedShort(u - 2); i > 0; --i) {
+//        u = readMethod(classVisitor, context, u);
+//    }
+    
+    items.sort(Sized.bySizeDescending());
+    return new ClassInformation(byteCode.length, byteCode, items, fields);
   }
+  
+  private int readField(int index, ClassReader reader) {
+    String fieldName = reader.readUTF8(index + 2, new char[reader.getMaxStringLength()]);
+    System.out.println("field name: " + fieldName);
+    int attributesCount = reader.readUnsignedShort(index + 6);
+    int currentIndex = index + 8;
+    for (int i = 0; i < attributesCount; i++) {
+      int attributeLength = reader.readInt(currentIndex + 2);
+      currentIndex += attributeLength;
+    }
+    return currentIndex;
+  }
+  
+  
 
 }

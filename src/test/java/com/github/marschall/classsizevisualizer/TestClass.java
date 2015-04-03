@@ -1,10 +1,14 @@
 package com.github.marschall.classsizevisualizer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestClass {
+import javax.annotation.Resource;
+
+public class TestClass implements Serializable {
   
+//  @Resource(name = "java:comp/env/double")
   private final double d = Math.random();
   
   private static final List<Object> LIST;
