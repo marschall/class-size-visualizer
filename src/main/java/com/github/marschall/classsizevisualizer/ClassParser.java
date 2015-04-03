@@ -65,7 +65,7 @@ class ClassParser {
     int currentIndex = index + 8;
     for (int i = 0; i < attributesCount; i++) {
       int attributeLength = reader.readInt(currentIndex + 2);
-      currentIndex += attributeLength;
+      currentIndex += attributeLength + 6;
     }
     return currentIndex;
   }

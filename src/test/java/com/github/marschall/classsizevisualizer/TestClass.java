@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 
 public class TestClass implements Serializable {
   
-//  @Resource(name = "java:comp/env/double")
+  @Resource(name = "java:comp/env/double")
   private final double d = Math.random();
   
   private static final List<Object> LIST;
