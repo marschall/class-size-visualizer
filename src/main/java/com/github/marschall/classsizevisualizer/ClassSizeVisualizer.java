@@ -14,7 +14,6 @@ public class ClassSizeVisualizer {
     InputStream stream = Files.newInputStream(path);
     ClassInformation information = new ClassParser().parse(new BufferedInputStream(stream));
     new ClassSizePrinter().print(information, System.out);
-
   }
 
 }

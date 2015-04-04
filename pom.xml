@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.marschall</groupId>
@@ -8,7 +9,7 @@
   <name>Class Size Visualizer</name>
   <description>Visualizes how a class size are made up.</description>
   <inceptionYear>2015</inceptionYear>
-  
+
   <prerequisites>
     <maven>3.0.3</maven>
   </prerequisites>
@@ -27,13 +28,13 @@
       <id>marschall</id>
       <name>Philippe Marschall</name>
       <email>philippe.marschall@gmail.com</email>
-      <timezone>+1</timezone>
+      <timezone>Europe/Paris</timezone>
       <roles>
         <role>developer</role>
       </roles>
     </developer>
   </developers>
-  
+
   <licenses>
     <license>
       <name>MIT</name>
@@ -55,7 +56,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
+
   <distributionManagement>
     <snapshotRepository>
       <id>sonatype-nexus-snapshots</id>
@@ -83,6 +84,7 @@
         <configuration>
           <links>
             <link>http://docs.oracle.com/javase/8/docs/api/</link>
+            <link>http://asm.ow2.org/asm50/javadoc/user/</link>
           </links>
         </configuration>
         <executions>
@@ -98,11 +100,11 @@
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-         <archive>
-           <manifest>
-             <mainClass>com.github.marschall.classsizevisualizer.ClassSizeVisualizer</mainClass>
-           </manifest>
-         </archive>
+          <archive>
+            <manifest>
+              <mainClass>com.github.marschall.classsizevisualizer.ClassSizeVisualizer</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
       <plugin>
@@ -178,7 +180,7 @@
       </plugins>
     </pluginManagement>
   </build>
-  
+
   <profiles>
     <profile>
       <id>deploy-to-sonatype-oss</id>
