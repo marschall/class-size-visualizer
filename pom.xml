@@ -96,6 +96,16 @@
         </executions>
       </plugin>
       <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+         <archive>
+           <manifest>
+             <mainClass>com.github.marschall.classsizevisualizer.ClassSizeVisualizer</mainClass>
+           </manifest>
+         </archive>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-source-plugin</artifactId>
         <executions>
           <execution>
