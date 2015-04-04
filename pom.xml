@@ -7,7 +7,7 @@
   <version>0.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>Class Size Visualizer</name>
-  <description>Visualizes how a class size are made up.</description>
+  <description>Visualizes how a class size is made up.</description>
   <inceptionYear>2015</inceptionYear>
 
   <prerequisites>

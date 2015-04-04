@@ -33,6 +33,9 @@ public class TestClass implements Serializable {
   }
   
   static void lamdba() {
+//    for (Object object : LIST) {
+//      System.out.println(object);
+//    }
     LIST.stream().forEach(System.out::println);
   }
   
