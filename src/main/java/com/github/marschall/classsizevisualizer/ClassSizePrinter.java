@@ -19,6 +19,10 @@ class ClassSizePrinter {
     for (Member method : information.getMethods()) {
       writer.printf("    %s %d bytes%n", method.toString(byteCode), method.getSize());
     }
+    writer.printf("attributes: %d bytes%n", information.getAttributesSize());
+    for (Member attribute : information.getAttributes()) {
+      writer.printf("    %s %d bytes%n", attribute.toString(byteCode), attribute.getSize());
+    }
   }
 
 }

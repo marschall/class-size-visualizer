@@ -9,13 +9,16 @@ class ClassInformation implements Sized {
   private final byte[] byteCode;
   private final List<Member> fields;
   private final List<Member> methods;
+  private final List<Member> attributes;
 
-  ClassInformation(int size, byte[] byteCode, List<ConstantPoolEntry> poolEntryies, List<Member> fields, List<Member> methods) {
+  ClassInformation(int size, byte[] byteCode, List<ConstantPoolEntry> poolEntryies,
+      List<Member> fields, List<Member> methods, List<Member> attributes) {
     this.size = size;
     this.poolEntryies = poolEntryies;
     this.byteCode = byteCode;
     this.fields = fields;
     this.methods = methods;
+    this.attributes = attributes;
   }
 
   List<ConstantPoolEntry> getPoolEntryies() {
@@ -30,6 +33,10 @@ class ClassInformation implements Sized {
     return this.methods;
   }
 
+  List<Member> getAttributes() {
+    return this.attributes;
+  }
+
   byte[] getByteCode() {
     return this.byteCode;
   }
@@ -41,9 +48,13 @@ class ClassInformation implements Sized {
   int getFieldsSize() {
     return sumOfSizes(this.fields);
   }
-  
+
   int getMethodsSize() {
     return sumOfSizes(this.methods);
+  }
+
+  int getAttributesSize() {
+    return sumOfSizes(this.attributes);
   }
 
   private static int sumOfSizes(List<? extends Sized> list) {
