@@ -7,35 +7,45 @@ class ClassInformation implements Sized {
   private final int size;
   private final List<ConstantPoolEntry> poolEntryies;
   private final byte[] byteCode;
-  private final List<Field> fields;
+  private final List<Member> fields;
+  private final List<Member> methods;
 
-  ClassInformation(int size, byte[] byteCode, List<ConstantPoolEntry> poolEntryies, List<Field> fields) {
+  ClassInformation(int size, byte[] byteCode, List<ConstantPoolEntry> poolEntryies, List<Member> fields, List<Member> methods) {
     this.size = size;
     this.poolEntryies = poolEntryies;
     this.byteCode = byteCode;
     this.fields = fields;
+    this.methods = methods;
   }
 
   List<ConstantPoolEntry> getPoolEntryies() {
-    return poolEntryies;
+    return this.poolEntryies;
   }
-  
-  List<Field> getFields() {
-    return fields;
+
+  List<Member> getFields() {
+    return this.fields;
+  }
+
+  List<Member> getMethods() {
+    return this.methods;
   }
 
   byte[] getByteCode() {
-    return byteCode;
+    return this.byteCode;
   }
 
   int getPoolSize() {
-    return sumOfSizes(poolEntryies);
+    return sumOfSizes(this.poolEntryies);
   }
-  
+
   int getFieldsSize() {
-    return sumOfSizes(fields);
+    return sumOfSizes(this.fields);
   }
   
+  int getMethodsSize() {
+    return sumOfSizes(this.methods);
+  }
+
   private static int sumOfSizes(List<? extends Sized> list) {
     return list.stream().mapToInt(e -> e.getSize()).sum();
   }

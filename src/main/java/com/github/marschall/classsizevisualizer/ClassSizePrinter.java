@@ -11,10 +11,14 @@ class ClassSizePrinter {
     for (ConstantPoolEntry entry : information.getPoolEntryies()) {
       writer.printf("    %s %d bytes%n", entry.toString(byteCode), entry.getSize());
     }
-    writer.printf("fields pool: %d bytes%n", information.getFieldsSize());
-    for (Field field : information.getFields()) {
+    writer.printf("fields: %d bytes%n", information.getFieldsSize());
+    for (Member field : information.getFields()) {
       writer.printf("    %s %d bytes%n", field.toString(byteCode), field.getSize());
     }
+    writer.printf("methods: %d bytes%n", information.getMethodsSize());
+    for (Member method : information.getMethods()) {
+      writer.printf("    %s %d bytes%n", method.toString(byteCode), method.getSize());
+    }
   }
-  
+
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 public class TestClass implements Serializable {
@@ -21,6 +22,7 @@ public class TestClass implements Serializable {
     super();
   }
 
+  @PostConstruct
   public static int getListSize() {
     return LIST.size();
   }
